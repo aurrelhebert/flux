@@ -16,7 +16,7 @@ import (
 	prompt "github.com/c-bata/go-prompt"
 	"github.com/influxdata/flux"
 	"github.com/influxdata/flux/execute"
-	"github.com/influxdata/flux/functions"
+	"github.com/influxdata/flux/builtin/functions"
 	"github.com/influxdata/flux/interpreter"
 	"github.com/influxdata/flux/lang"
 	"github.com/influxdata/flux/parser"

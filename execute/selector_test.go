@@ -9,7 +9,7 @@ import (
 	"github.com/influxdata/flux"
 	"github.com/influxdata/flux/execute"
 	"github.com/influxdata/flux/execute/executetest"
-	"github.com/influxdata/flux/functions"
+	"github.com/influxdata/flux/builtin/functions"
 )
 
 func TestRowSelector_Process(t *testing.T) {

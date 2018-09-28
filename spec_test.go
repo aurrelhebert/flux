@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/influxdata/flux/builtin/inputs"
 	"os"
 	"strconv"
 	"testing"
@@ -12,8 +13,8 @@ import (
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
 	"github.com/influxdata/flux"
-	"github.com/influxdata/flux/functions"
-	_ "github.com/influxdata/flux/options"
+	"github.com/influxdata/flux/builtin/functions"
+	_ "github.com/influxdata/flux/builtin/options"
 	"github.com/influxdata/flux/parser"
 	"github.com/influxdata/flux/semantic"
 	"github.com/influxdata/flux/values"
@@ -65,7 +66,7 @@ func TestSpec_JSON(t *testing.T) {
 		Operations: []*flux.Operation{
 			{
 				ID: "from",
-				Spec: &functions.FromOpSpec{
+				Spec: &inputs.FromOpSpec{
 					Bucket: "mybucket",
 				},
 			},

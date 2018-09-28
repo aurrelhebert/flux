@@ -13,7 +13,7 @@ import (
 	_ "github.com/influxdata/flux/builtin"
 	"github.com/influxdata/flux/execute"
 	"github.com/influxdata/flux/execute/executetest"
-	"github.com/influxdata/flux/functions"
+	"github.com/influxdata/flux/builtin/functions"
 	"github.com/influxdata/flux/plan"
 	uuid "github.com/satori/go.uuid"
 	"go.uber.org/zap/zaptest"

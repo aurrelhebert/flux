@@ -1,11 +1,12 @@
 package plan_test
 
 import (
+	"github.com/influxdata/flux/builtin/inputs"
 	"testing"
 	"time"
 
 	"github.com/influxdata/flux"
-	"github.com/influxdata/flux/functions"
+	"github.com/influxdata/flux/builtin/functions"
 	"github.com/influxdata/flux/plan"
 )
 
@@ -19,7 +20,7 @@ func TestPhysicalPlanner_DefaultMemoryLimit(t *testing.T) {
 		Procedures: map[plan.ProcedureID]*plan.Procedure{
 			plan.ProcedureIDFromOperationID("from"): {
 				ID: plan.ProcedureIDFromOperationID("from"),
-				Spec: &functions.FromProcedureSpec{
+				Spec: &inputs.FromProcedureSpec{
 					Bucket: "mydb",
 				},
 				Parents:  nil,

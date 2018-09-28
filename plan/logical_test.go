@@ -1,13 +1,14 @@
 package plan_test
 
 import (
+	"github.com/influxdata/flux/builtin/inputs"
 	"strconv"
 	"testing"
 	"time"
 
 	"github.com/google/go-cmp/cmp"
 	"github.com/influxdata/flux"
-	"github.com/influxdata/flux/functions"
+	"github.com/influxdata/flux/builtin/functions"
 	"github.com/influxdata/flux/plan"
 	"github.com/influxdata/flux/plan/plantest"
 )
@@ -22,7 +23,7 @@ func TestLogicalPlanner_Plan(t *testing.T) {
 				Operations: []*flux.Operation{
 					{
 						ID: "0",
-						Spec: &functions.FromOpSpec{
+						Spec: &inputs.FromOpSpec{
 							Bucket: "mybucket",
 						},
 					},
@@ -47,7 +48,7 @@ func TestLogicalPlanner_Plan(t *testing.T) {
 				Procedures: map[plan.ProcedureID]*plan.Procedure{
 					plan.ProcedureIDFromOperationID("0"): {
 						ID: plan.ProcedureIDFromOperationID("0"),
-						Spec: &functions.FromProcedureSpec{
+						Spec: &inputs.FromProcedureSpec{
 							Bucket: "mybucket",
 						},
 						Parents:  nil,
@@ -88,7 +89,7 @@ func TestLogicalPlanner_Plan(t *testing.T) {
 				Procedures: map[plan.ProcedureID]*plan.Procedure{
 					plan.ProcedureIDFromOperationID("select0"): {
 						ID: plan.ProcedureIDFromOperationID("select0"),
-						Spec: &functions.FromProcedureSpec{
+						Spec: &inputs.FromProcedureSpec{
 							Bucket: "mybucket",
 						},
 						Parents:  nil,
@@ -117,7 +118,7 @@ func TestLogicalPlanner_Plan(t *testing.T) {
 					},
 					plan.ProcedureIDFromOperationID("select1"): {
 						ID: plan.ProcedureIDFromOperationID("select1"),
-						Spec: &functions.FromProcedureSpec{
+						Spec: &inputs.FromProcedureSpec{
 							Bucket: "mybucket",
 						},
 						Parents:  nil,
@@ -194,7 +195,7 @@ var benchmarkQuery = &flux.Spec{
 	Operations: []*flux.Operation{
 		{
 			ID: "select0",
-			Spec: &functions.FromOpSpec{
+			Spec: &inputs.FromOpSpec{
 				Bucket: "mybucket",
 			},
 		},
@@ -211,7 +212,7 @@ var benchmarkQuery = &flux.Spec{
 		},
 		{
 			ID: "select1",
-			Spec: &functions.FromOpSpec{
+			Spec: &inputs.FromOpSpec{
 				Bucket: "mybucket",
 			},
 		},
